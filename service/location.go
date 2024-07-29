@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"fmt"
+	"live-track/main/domain"
 	"log"
 	"net/http"
 	"time"
@@ -11,7 +12,14 @@ import (
 	"nhooyr.io/websocket/wsjson"
 )
 
-func Publish() http.HandlerFunc {
+type locationRepository struct {
+}
+
+func NewLocationRepository() domain.LocationRepository {
+	return locationRepository{}
+}
+
+func (repo locationRepository) Publish() http.HandlerFunc {
 	fmt.Print("Hello world")
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		c, err := websocket.Accept(w, r, nil)
