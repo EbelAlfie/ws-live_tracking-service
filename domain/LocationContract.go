@@ -3,9 +3,9 @@ package domain
 import "net/http"
 
 type LocationRepository interface {
-	Publish() http.HandlerFunc
+	Publish(writer http.ResponseWriter, req *http.Request)
 }
 
 type LocationController interface {
-	Publish()
+	Publish(writer http.ResponseWriter, req *http.Request)
 }
