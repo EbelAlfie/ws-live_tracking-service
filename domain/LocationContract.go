@@ -7,5 +7,5 @@ type LocationRepository interface {
 }
 
 type LocationController interface {
-	Publish()
+	Publish(writer http.ResponseWriter, request http.Request)
 }
