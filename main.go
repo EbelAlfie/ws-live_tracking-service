@@ -15,6 +15,6 @@ func main() {
 
 	err := http.ListenAndServe("localhost:3069", route)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("ERROR", err)
 	}
 }

@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 	"live-track/main/domain"
 	"log"
 	"net/http"
@@ -19,9 +20,10 @@ func NewLocationRepository() domain.LocationRepository {
 }
 
 func (repo locationRepository) Publish(writer http.ResponseWriter, req *http.Request) {
+	fmt.Print("HELLO LOCATION")
 	c, err := websocket.Accept(writer, req, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("REPO ERROR", err)
 	}
 	defer c.CloseNow()
 
@@ -31,7 +33,7 @@ func (repo locationRepository) Publish(writer http.ResponseWriter, req *http.Req
 	var v interface{}
 	err = wsjson.Read(ctx, c, &v)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("REPO ERROR", err)
 	}
 
 	log.Printf("received: %v", v)
