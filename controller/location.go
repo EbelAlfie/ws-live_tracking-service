@@ -16,6 +16,6 @@ func NewLocationController() domain.LocationController {
 	}
 }
 
-func (controller locationController) Publish(writer http.ResponseWriter, request http.Request) {
-	controller.repo.Publish()
+func (controller locationController) Publish(writer http.ResponseWriter, req *http.Request) {
+	controller.repo.Publish(writer, req)
 }
