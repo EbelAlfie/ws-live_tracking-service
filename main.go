@@ -9,11 +9,13 @@ import (
 
 func main() {
 
-	route := route.LocationRoute()
+	mux := http.NewServeMux()
+
+	route.LocationRoute(mux)
 
 	fmt.Print("Hello world")
 
-	err := http.ListenAndServe("localhost:3069", route)
+	err := http.ListenAndServe("localhost:3069", mux)
 	if err != nil {
 		log.Fatal("ERROR", err)
 	}
