@@ -8,5 +8,5 @@ import (
 func LocationRoute(mux *http.ServeMux) {
 	controller := controller.NewLocationController()
 
-	mux.HandleFunc("/send/", controller.Publish)
+	mux.HandleFunc("/send", controller.Publish)
 }

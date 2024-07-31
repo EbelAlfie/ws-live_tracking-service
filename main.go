@@ -15,7 +15,7 @@ func main() {
 
 	fmt.Print("Hello world")
 
-	err := http.ListenAndServe("localhost:3069", mux)
+	err := http.ListenAndServe("localhost:3040", mux)
 	if err != nil {
 		log.Fatal("ERROR", err)
 	}
