@@ -5,9 +5,17 @@ import (
 	"live-track/main/route"
 	"log"
 	"net/http"
+	"os"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	baseAddr := os.Getenv("BASE_ADDR")
 
 	mux := http.NewServeMux()
 
@@ -15,7 +23,7 @@ func main() {
 
 	fmt.Print("Hello world")
 
-	err := http.ListenAndServe("localhost:3040", mux)
+	err = http.ListenAndServe(baseAddr, mux)
 	if err != nil {
 		log.Fatal("ERROR", err)
 	}
